@@ -5,7 +5,7 @@
 
 Welcome to the **AF Neigborhood App**, a thoughtfully designed application built entirely with native Apple technologies. This project is crafted exclusively for students of **Kodeco** (formerly RayWenderlich.com) to gain real-world iOS development experience using modern Swift tools and best practices.
 
-> ✅ **Note:** This project is for **educational use only**. But you can fork it and distribut it will. 
+> ✅ **Note:** This project is for **educational use only**. But you can fork it and distribute it at will. 
 
 ---
 
@@ -130,14 +130,3 @@ By the end of this project, you’ll understand how to:
 This project is licensed under the **MIT License**.  
 
 - ✅ Forking for personal educational use is encouraged  
-
-
-
-
-
-
-
-
-
-
-
