@@ -2,7 +2,7 @@
 //  ContentView.swift
 //  AFneigbordhood
 //
-//  Created by M00306 on 7/26/25.
+//  Created by Carlos Cuevas on 7/26/25.
 //
 
 import SwiftUI
@@ -10,19 +10,22 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         TabView {
-            VStack {
-                Image(systemName: "globe")
-                    .imageScale(.large)
-                    .foregroundStyle(.tint)
-                Text("Hello, world!")
-            }
-            .tabItem {
-                Label("Home", systemImage: "house")
-            }
-            
-            Text("Settings")
+            Home()
                 .tabItem {
-                    Label("Settings", systemImage: "gear")
+                    Label("Home", systemImage: "house")
+                }
+            
+            Text("CLUB HOUSE")
+                .tabItem {
+                    Label("club house", systemImage: "gear")
+                }
+            Text("FAQ")
+                .tabItem {
+                    Label("FAQ", systemImage: "gear")
+                }
+            Text("Community")
+                .tabItem {
+                    Label("Community", systemImage: "gear")
                 }
         }
     }
