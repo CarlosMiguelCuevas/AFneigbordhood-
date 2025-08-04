@@ -15,17 +15,17 @@ struct ContentView: View {
                     Label("Home", systemImage: "house")
                 }
             
-            Text("CLUB HOUSE")
+            ClubHouse()
                 .tabItem {
-                    Label("club house", systemImage: "gear")
+                    Label("club house", systemImage:"music.note.house")
                 }
-            Text("FAQ")
+            Faq()
                 .tabItem {
-                    Label("FAQ", systemImage: "gear")
+                    Label("FAQ", systemImage: "questionmark.circle")
                 }
-            Text("Community")
+            Market()
                 .tabItem {
-                    Label("Community", systemImage: "gear")
+                    Label("Market", systemImage: "cart")
                 }
         }
     }
