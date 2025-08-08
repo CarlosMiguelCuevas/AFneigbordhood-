@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct Home: View {
-    let events = Events.sampleEvents
+    let events = Event.sampleEvents
     let messages = Message.sampleMessages
-    let comitteeMembers = CommitteeMamber.sampleMembers
+    let comitteeMembers = CommitteeMember.sampleMembers
     
     var body: some View {
         ZStack {
@@ -59,10 +59,18 @@ struct Home: View {
                     
                     // Contact Administration Section
                     AfSectionHeader(title: "Contact Administration")
-                    AfListItem(
-                        image: Image(systemName: "phone"),
-                        title: "Sinergia Administration",
-                        description: "Contact us thourgh Whatsapp 555-555-5555")
+                    Button(action: {
+                        if let url = URL(string: "tel://5555555555") {
+                            UIApplication.shared.open(url)
+                        }
+                    }) {
+                        AfListItem(
+                            image: Image(systemName: "phone"),
+                            title: "Sinergia Administration",
+                            description: "Contact us thourgh Whatsapp 555-555-5555"
+                        )
+                    }
+                    .buttonStyle(PlainButtonStyle()) 
                     .padding(.horizontal)
                 }
                 .padding(.vertical)

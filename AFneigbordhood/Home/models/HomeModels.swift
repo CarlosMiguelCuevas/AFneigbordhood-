@@ -6,7 +6,7 @@
 //
 import Foundation
 
-struct Events: Identifiable {
+struct Event: Identifiable {
     let id = UUID()
     let title: String
     let description: String
@@ -20,7 +20,7 @@ struct Message: Identifiable {
     let description: String
 }
 
-struct CommitteeMamber: Identifiable {
+struct CommitteeMember: Identifiable {
     let id = UUID()
     let name: String
     let role: CommitteeRole
@@ -31,4 +31,10 @@ enum CommitteeRole: String {
     case vicePresident = "Vice President"
     case secretary = "Secretary"
     case treasurer = "Treasurer"
+}
+
+
+struct AdministationContactInformation {
+    let phoneNumber: String
+    let adminName: String
 }
