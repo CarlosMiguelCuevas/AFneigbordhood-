@@ -23,6 +23,7 @@ struct ContentView: View {
                 .tabItem {
                     Label("FAQ", systemImage: "questionmark.circle")
                 }
+                .environment(FaqManager(faqService: MockFaqService()))
             Market()
                 .tabItem {
                     Label("Market", systemImage: "cart")
