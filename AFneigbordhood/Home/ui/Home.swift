@@ -31,13 +31,13 @@ struct Home: View {
                                 )
                             }
                         }
-                        .padding(.horizontal)
+                        .padding()
                     }
 
                     // Important Messages Section
                     AfSectionHeader(title: "Important Messages")
 
-                    VStack(spacing: 16) {
+                    VStack {
                         ForEach(homeViewModel.importantMessages ?? []) {
                             message in
                             AfListItem(
@@ -48,6 +48,7 @@ struct Home: View {
                         }
                     }
                     .padding(.horizontal)
+                    
 
                     // Committee Members Section
                     AfSectionHeader(title: "Committee Members")
