@@ -25,7 +25,7 @@ struct Home: View {
                             ForEach(homeViewModel.upcomingEvents ?? []) {
                                 event in
                                 AfFeaturedCard(
-                                    image: Image(systemName: "photo"),
+                                    image: Image("event_\(event.imagecode)"),
                                     title: event.title,
                                     description: event.description
                                 )
@@ -41,7 +41,7 @@ struct Home: View {
                         ForEach(homeViewModel.importantMessages ?? []) {
                             message in
                             AfListItem(
-                                image: Image(systemName: "house"),
+                                image: Image("message_\(message.imagecode)"),
                                 title: message.title,
                                 description: message.description
                             )

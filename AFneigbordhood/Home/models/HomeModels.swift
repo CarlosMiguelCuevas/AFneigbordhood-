@@ -11,6 +11,7 @@ struct Event: Identifiable {
     let title: String
     let description: String
     let date: String
+    let imagecode: String
 }
 
 
@@ -18,6 +19,7 @@ struct Message: Identifiable {
     let id = UUID()
     let title: String
     let description: String
+    let imagecode: String
 }
 
 struct CommitteeMember: Identifiable {
