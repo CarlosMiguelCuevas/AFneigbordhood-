@@ -18,3 +18,14 @@ struct HomeCommitteeMembersService: HomeCommitteeServiceProtocol {
     
     
 }
+
+
+struct MockedHomeCommitteeMembersService: HomeCommitteeServiceProtocol {
+    func getMembers() async throws -> [CommitteeMember] {
+        return [
+            CommitteeMember(name: "Joe", role: .president),
+            CommitteeMember(name: "Lupita Verduzco", role: .secretary),
+            CommitteeMember(name: "Eduardo", role: .treasurer)
+        ]
+    }
+}

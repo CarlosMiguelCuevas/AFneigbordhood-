@@ -15,14 +15,36 @@ class HomeViewModel {
     var committeeMebers: [CommitteeMember]? = nil
     var administationContactInformation: AdministationContactInformation? = nil
     
-    func loadFaqs(faqManager: FaqManager) async {
+    func loadUpcomingEvents(homeManager: HomeServiceProtocol) async {
         do {
-            questions = try await faqManager.fetchQuestions()
-            
+            upcomingEvents = try await homeManager.getEvents()
         } catch {
-            questions = nil
+            upcomingEvents = nil
         }
-        
+    }
+    
+    func loadImportantMessages(homeManager: HomeServiceProtocol) async {
+        do {
+            importantMessages = try await homeManager.getMessages()
+        } catch {
+            importantMessages = nil
+        }
+    }
+    
+    func loadCommitteeMebers(homeManager: HomeServiceProtocol) async {
+        do {
+            committeeMebers = try await homeManager.getMembers()
+        } catch {
+            committeeMebers = nil
+        }
+    }
+    
+    func loadAdministationContactInformation(homeManager: HomeServiceProtocol) async {
+        do {
+            administationContactInformation = try await homeManager.getAdminContactInformation()
+        } catch {
+            administationContactInformation = nil
+        }
     }
     
 }

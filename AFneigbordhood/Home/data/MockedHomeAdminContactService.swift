@@ -10,8 +10,8 @@ import Foundation
 struct MockedHomeAdminContactService: HomeAdminContactServiceProtocol {
     func getAdminContactInformation() async throws -> AdministationContactInformation {
         return AdministationContactInformation(
-            "555-555-5555",
-            "Sinergia Administration"
+            phoneNumber: "555-555-5555",
+            adminName: "Sinergia Administration"
         )
     }
     

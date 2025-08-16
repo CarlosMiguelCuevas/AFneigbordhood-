@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct Home: View {
-    let events = Event.sampleEvents
-    let messages = Message.sampleMessages
-    let comitteeMembers = CommitteeMember.sampleMembers
+
+    @Environment(HomeManager.self) private var homeManager
+    @State private var homeViewModel = HomeViewModel()
     
     var body: some View {
         ZStack {
@@ -22,7 +22,7 @@ struct Home: View {
                     AfSectionHeader(title: "Upcoming Events")
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(spacing: 16) {
-                            ForEach(events) { event in
+                            ForEach(homeViewModel.upcomingEvents ?? []) { event in
                                 AfFeaturedCard(image: Image(systemName: "photo"),
                                                title: event.title,
                                                description: event.description)
@@ -35,7 +35,7 @@ struct Home: View {
                     AfSectionHeader(title: "Important Messages")
                     
                     VStack(spacing: 16) {
-                        ForEach(messages) { message in
+                        ForEach(homeViewModel.importantMessages ?? []) { message in
                             AfListItem(
                                 image: Image(systemName: "house"),
                                 title: message.title, description: message.description)
@@ -49,7 +49,7 @@ struct Home: View {
                     AfSectionHeader(title: "Committee Members")
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(spacing: 16) {
-                            ForEach(comitteeMembers) { member in
+                            ForEach(homeViewModel.committeeMebers ?? []) { member in
                                 AfFeaturedCard(image: Image(systemName: "person.crop.circle"), title: member.name,
                                                description: member.role.rawValue)
                             }
@@ -66,8 +66,8 @@ struct Home: View {
                     }) {
                         AfListItem(
                             image: Image(systemName: "phone"),
-                            title: "Sinergia Administration",
-                            description: "Contact us thourgh Whatsapp 555-555-5555"
+                            title: homeViewModel.administationContactInformation?.adminName ?? "",
+                            description: "Contact us thourgh Whatsapp \(homeViewModel.administationContactInformation?.phoneNumber ?? "")"
                         )
                     }
                     .buttonStyle(PlainButtonStyle()) 
@@ -75,6 +75,12 @@ struct Home: View {
                 }
                 .padding(.vertical)
             }
+        }
+        .task {
+            await homeViewModel.loadUpcomingEvents(homeManager: homeManager)
+            await homeViewModel.loadImportantMessages(homeManager: homeManager)
+            await homeViewModel.loadCommitteeMebers(homeManager: homeManager)
+            await homeViewModel.loadAdministationContactInformation(homeManager: homeManager)
         }
     }
 }
